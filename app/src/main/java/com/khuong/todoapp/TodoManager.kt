@@ -25,5 +25,4 @@ object TodoManager {
             it.id==id
         }
     }
-
 }

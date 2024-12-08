@@ -47,6 +47,7 @@ import java.time.ZoneId
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
@@ -258,7 +259,7 @@ fun TodoInputForm(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = Icons.Default.DateRange,
+                    imageVector = Icons.Default.KeyboardArrowDown,
                     contentDescription = "Select Date",
                     tint = Color.White
                 )

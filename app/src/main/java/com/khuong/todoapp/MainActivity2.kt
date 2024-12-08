@@ -90,9 +90,9 @@ class MainActivity2 : ComponentActivity() {
 }
 @Composable
 fun MainActivity2Content() {
-    var selectedTime by remember { mutableIntStateOf(5) }  // Thời gian mặc định 5 phút
-    var isCountingDown by remember { mutableStateOf(false) }  // Trạng thái đếm ngược
-    var remainingTime by remember { mutableIntStateOf(selectedTime * 60) } // Thời gian còn lại (giây)
+    var selectedTime by remember { mutableIntStateOf(5) }
+    var isCountingDown by remember { mutableStateOf(false) }
+    var remainingTime by remember { mutableIntStateOf(selectedTime * 60) }
 
     // Biến cho giờ, phút, giây, AM/PM (giữ nguyên cho phần đồng hồ analog/digital)
     var hour by remember { mutableStateOf("0") }
