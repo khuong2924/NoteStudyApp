@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".TodoFragment">
+
+    <!-- Header with two buttons -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"> <!-- Added margin to create space between buttons and content -->
+
+        <Button
+            android:id="@+id/view1Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="View 1"
+            android:layout_marginEnd="8dp" /> <!-- Added margin to separate buttons -->
+
+        <Button
+            android:id="@+id/view2Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="View 2" />
+    </LinearLayout>
+
+    <!-- Content view, will be updated based on button click -->
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/contentFrame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"/> <!-- Added margin top to separate the content -->
+
+</LinearLayout>
