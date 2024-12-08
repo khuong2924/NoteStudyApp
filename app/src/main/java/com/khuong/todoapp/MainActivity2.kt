@@ -13,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
@@ -26,8 +27,6 @@ import java.util.*
 
 
 class MainActivity2 : ComponentActivity() {
-
-
     private val viewModel: TodoViewModel2 by viewModels()
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -192,14 +191,24 @@ fun MainActivity2Content() {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+
+                    // Nút Start/Stop Countdown
                     Button(
                         onClick = {
-                            remainingTime = selectedTime * 60  // Đặt lại thời gian còn lại theo phút đã chọn
-                            isCountingDown = true  // Bắt đầu đếm ngược
-                        }
+                            if (isCountingDown) {
+                                isCountingDown = false // Dừng đếm ngược
+                            } else {
+                                remainingTime = selectedTime * 60 // Cập nhật thời gian
+                                isCountingDown = true // Bắt đầu đếm ngược
+                            }
+                        },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (isCountingDown) Color.Red else Color(0xFF006400)
+                        )
                     ) {
-                        Text("Start Countdown")
+                        Text(if (isCountingDown) "Stop Countdown" else "Start Countdown")
                     }
+
                     Spacer(modifier = Modifier.height(24.dp))
 
                     CountdownTimer(remainingTime = remainingTime)
@@ -219,10 +228,6 @@ fun CountdownTimer(remainingTime: Int) {
     )
 }
 
-
-
-
-
 @Composable
 fun TimeSlider(selectedTime: Int, onTimeChanged: (Int) -> Unit) {
     // Slider với giá trị từ 1 đến 60 phút
@@ -234,17 +239,6 @@ fun TimeSlider(selectedTime: Int, onTimeChanged: (Int) -> Unit) {
         modifier = Modifier.fillMaxWidth(0.8f)
     )
 }
-
-//@Composable
-//fun CountdownTimer(remainingTime: Int) {
-//    // Tính toán và hiển thị thời gian đếm ngược dưới dạng phút:giây
-//    val minutes = remainingTime / 60
-//    val seconds = remainingTime % 60
-//    Text(
-//        text = String.format(Locale.US, "%02d:%02d", minutes, seconds)
-////        style = MaterialTheme.typography.h6  // Sử dụng h6 thay vì h4
-//    )
-//}
 
 fun playAlarmSound(context: Context) {
     val mediaPlayer = MediaPlayer.create(context, R.raw.chuongreo)
@@ -281,7 +275,6 @@ fun CommonComposable(
             content()
         }
     }
-
 }
 
 
